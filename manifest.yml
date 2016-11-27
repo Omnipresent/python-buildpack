@@ -10,7 +10,7 @@ url_to_dependency_map:
 
 dependencies:
   - name: python
-    version: 2.7.11
+    version: 2.7.12
     cf_stacks:
       - cflinuxfs2
     uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-2.7.12-linux-x64.tgz
