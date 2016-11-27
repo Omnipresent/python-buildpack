@@ -207,35 +207,6 @@ set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
 
-# Install Python.
-source $BIN_DIR/steps/python
-
-# Sanity check for setuptools/distribute.
-source $BIN_DIR/steps/setuptools
-
-# Uninstall removed dependencies with Pip.
-source $BIN_DIR/steps/pip-uninstall
-
-# Mercurial support.
-source $BIN_DIR/steps/mercurial
-
-# Pylibmc support.
-source $BIN_DIR/steps/pylibmc
-
-# Libffi support.
-source $BIN_DIR/steps/cryptography
-
-# Support for Geo libraries.
-sub-env $BIN_DIR/steps/geo-libs
-
-# GDAL support.
-source $BIN_DIR/steps/gdal
-
-# Install dependencies with Pip.
-source $BIN_DIR/steps/pip-install
-
-# Django collectstatic support.
-sub-env $BIN_DIR/steps/collectstatic
 
 
 # Create .profile script for application runtime environment variables.
