@@ -24,13 +24,13 @@ if [ ! -e ".heroku/vendor/lib/labs-leptonica-1.71/lib/lept.so.4.0.2" ]; then
 
   # translated_url=`translate_dependency_url $VENDORED_LEPTONICA`
   # filtered_url=`filter_dependency_url $translated_url`
-  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_LEPTONICA /tmp)
+  # filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_LEPTONICA /tmp)
   echo "Downloaded [$filtered_url]"
   # curl $translated_url -s | tar zxv -C .heroku/vendor &> /dev/null
-  # curl https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz -s | tar zxv -C .heroku/vendor &> /dev/null
-  downloaded_file=/tmp/leptonica-1.71.tgz
-  tar zxv $downloaded_file -C .heroku/vendor &> /dev/null
-  rm $downloaded_file
+  curl https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz -s | tar zxv -C .heroku/vendor &> /dev/null
+  # downloaded_file=/tmp/leptonica-1.71.tgz
+  # tar zxv $downloaded_file -C .heroku/vendor &> /dev/null
+  # rm $downloaded_file
   
 fi
 
