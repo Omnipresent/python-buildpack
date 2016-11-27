@@ -22,12 +22,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
-# Use miniconda if environment.yml exists and exit
-if [ -f $BUILD_DIR/environment.yml ]; then
-  echo "----------------- USING CONDA BUILDPACK -----------------"
-  $BIN_DIR/steps/conda-install $BUILD_DIR $CACHE_DIR
-  exit 0
-fi
+
 
 $ROOT_DIR/compile-extensions/bin/check_stack_support
 
@@ -100,25 +95,6 @@ APP_DIR='/app'
 TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
 
 
-# Skip these steps for Docker.
-if [[ ! "$SKIP_MOVE_BUILD" ]]; then
-
-  # Copy Anvil app dir to temporary storage...
-  bpwatch start anvil_appdir_stage
-  if [ "$SLUG_ID" ]; then
-    mkdir -p $TMP_APP_DIR
-    deep-mv $APP_DIR $TMP_APP_DIR
-  else
-    deep-rm $APP_DIR
-  fi
-  bpwatch stop anvil_appdir_stage
-
-  # Copy Application code in.
-  bpwatch start appdir_stage
-    deep-cp $BUILD_DIR $APP_DIR
-  bpwatch stop appdir_stage
-fi
-
 
 # Set new context.
 ORIG_BUILD_DIR=$BUILD_DIR
@@ -150,10 +126,6 @@ if [[ ! -f Procfile ]]; then
   puts-warn 'Learn more: https://docs.cloudfoundry.org/buildpacks/prod-server.html#procfile'
 fi
 
-# Experimental pre_compile hook.
-bpwatch start pre_compile
-  source $BIN_DIR/steps/hooks/pre_compile
-bpwatch stop pre_compile
 
 # If no requirements.txt file given, assume `setup.py develop` is intended.
 if [ ! -f requirements.txt ]; then
@@ -218,10 +190,7 @@ set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/
 
-# Experimental post_compile hook.
-bpwatch start post_compile
-  source $BIN_DIR/steps/hooks/post_compile
-bpwatch stop post_compile
+
 
 # Store new artifacts in cache.
 bpwatch start dump_cache
