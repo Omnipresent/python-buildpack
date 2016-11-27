@@ -23,6 +23,7 @@ if [ ! -e ".heroku/python/lib/python2.7/site-packages/cv2.so" ]; then
   mkdir -p .heroku/python/lib/python2.7/site-packages
   echo "here"
   filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_OPENCV /tmp)
+  echo "here2"
   echo "Downloaded [$filtered_url]"
   downloaded_file=/tmp/opencv3.0_with_contrib_2.tar.gz
   tar zxvf $downloaded_file -C .heroku/vendor &> /dev/null
