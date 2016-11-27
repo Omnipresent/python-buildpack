@@ -2,7 +2,7 @@
 language: siftlib
 default_versions:
   - name: python
-    version: 2.7.12
+    version: 2.7.11
 url_to_dependency_map:
   - match: python-(\d+\.\d+\.\d+)
     name: python
