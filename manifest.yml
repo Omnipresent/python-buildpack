@@ -4,9 +4,9 @@ default_versions:
   - name: python
     version: 2.7.12
 url_to_dependency_map:
-  - match: python-(\d+\.\d+\.\d+)
+  - match: python
     name: python
-    version: $1
+    version: 2.7.12
 
 dependencies:
   - name: python
