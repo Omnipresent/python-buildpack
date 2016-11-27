@@ -21,7 +21,7 @@ ROOT_DIR=$(dirname $BIN_DIR)
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-vendor_dir=$build_dir/.heroku/vendor
+vendor_dir=$BUILD_DIR/.heroku/vendor
 
 # Use miniconda if environment.yml exists and exit
 if [ -f $BUILD_DIR/environment.yml ]; then
@@ -51,7 +51,7 @@ export BUILDPACK_PATH
 source $BUILDPACK_PATH/compile-extensions/lib/common
 # END CF Common
 
-# mkdir -p $vendor_dir
+mkdir -p $vendor_dir
 
 # Static configurations for virtualenv caches.
 VIRTUALENV_LOC=".heroku/venv"
