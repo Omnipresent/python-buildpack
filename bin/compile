@@ -127,6 +127,7 @@ BUILD_DIR=$APP_DIR
 # Set up outputs under new context
 PROFILE_PATH="$BUILD_DIR/.profile.d/python.sh"
 EXPORT_PATH="$BIN_DIR/../export"
+GUNICORN_PROFILE_PATH="$BUILD_DIR/.profile.d/python.gunicorn.sh"
 
 # We'll need to send these statics to other scripts we `source`.
 export BUILD_DIR CACHE_DIR BIN_DIR PROFILE_PATH EXPORT_PATH
@@ -206,6 +207,35 @@ set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
 
+# Install Python.
+source $BIN_DIR/steps/python
+
+# Sanity check for setuptools/distribute.
+source $BIN_DIR/steps/setuptools
+
+# Uninstall removed dependencies with Pip.
+source $BIN_DIR/steps/pip-uninstall
+
+# Mercurial support.
+source $BIN_DIR/steps/mercurial
+
+# Pylibmc support.
+source $BIN_DIR/steps/pylibmc
+
+# Libffi support.
+source $BIN_DIR/steps/cryptography
+
+# Support for Geo libraries.
+sub-env $BIN_DIR/steps/geo-libs
+
+# GDAL support.
+source $BIN_DIR/steps/gdal
+
+# Install dependencies with Pip.
+source $BIN_DIR/steps/pip-install
+
+# Django collectstatic support.
+sub-env $BIN_DIR/steps/collectstatic
 
 
 # Create .profile script for application runtime environment variables.
@@ -217,6 +247,10 @@ set-env LD_LIBRARY_PATH '/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LD_LIB
 set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/
+
+# Install sane-default script for $WEB_CONCURRENCY and $FORWARDED_ALLOW_IPS.
+cp $ROOT_DIR/vendor/python.gunicorn.sh $GUNICORN_PROFILE_PATH
+
 
 # Experimental post_compile hook.
 bpwatch start post_compile
