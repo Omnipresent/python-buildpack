@@ -30,7 +30,10 @@ if [ ! -e ".heroku/vendor/lib/labs-leptonica-1.71/lib/lept.so.4.0.2" ]; then
   curl https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz -s | tar zxv -C .heroku/vendor &> /dev/null
   downloaded_file=/tmp/leptonica-1.71.tgz
   echo "File: $downloaded_file"
+  echo $(ls -al)
   echo $(ls -al /tmp/leptonica-1.71.tgz)
+  tar zxv $downloaded_file
+  echo $(ls -al )
   # tar zxv $downloaded_file -C .heroku/vendor &> /dev/null
   # rm $downloaded_file
   
