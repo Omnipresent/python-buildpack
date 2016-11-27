@@ -1,7 +1,7 @@
 ---
 language: siftlib
 default_versions:
-  - name: siftlib
+  - name: python
     version: 2.7.12
 url_to_dependency_map:
   - match: python-(\d+\.\d+\.\d+)
@@ -9,7 +9,7 @@ url_to_dependency_map:
     version: $1
 
 dependencies:
-  - name: siftlib
+  - name: python
     version: 2.7.12
     cf_stacks:
       - cflinuxfs2
