@@ -13,6 +13,9 @@ url_to_dependency_map:
   - match: libffi
     name: libffi
     version: "3.1"
+  - match: leptonica
+    name: leptonica
+    version: 1.71    
 
 dependencies:
   - name: libmemcache
@@ -75,6 +78,12 @@ dependencies:
       - cflinuxfs2
     uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.5.2-linux-x64.tgz
     md5: 701a135b3228075c2ce59c527bc92e1e
+  - name: leptonica
+    version: 1.71
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz
+    md5: cd67505a49adf506cbf130f340338ff6    
 exclude_files:
   - .git/
   - .gitignore
