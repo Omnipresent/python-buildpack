@@ -47,19 +47,6 @@ mkdir -p $VENDOR_DIR
 VIRTUALENV_LOC=".heroku/venv"
 LEGACY_TRIGGER="lib/python2.7"
 
-# Common Problem Warnings
-export WARNINGS_LOG=$(mktemp)
-export RECOMMENDED_PYTHON_VERSION=$DEFAULT_PYTHON_VERSION
-
-# Setup bpwatch
-export PATH=$PATH:$ROOT_DIR/vendor/bpwatch
-LOGPLEX_KEY="t.b90d9d29-5388-4908-9737-b4576af1d4ce"
-export BPWATCH_STORE_PATH=$CACHE_DIR/bpwatch.json
-BUILDPACK_VERSION=v28
-
-# Setup pip-pop (pip-diff)
-export PATH=$PATH:$ROOT_DIR/vendor/pip-pop
-
 # Support Anvil Build_IDs
 [ ! "$SLUG_ID" ] && SLUG_ID="defaultslug"
 [ ! "$REQUEST_ID" ] && REQUEST_ID=$SLUG_ID
@@ -70,12 +57,7 @@ unset GIT_DIR PYTHONHOME PYTHONPATH
 unset RECEIVE_DATA RUN_KEY BUILD_INFO DEPLOY LOG_TOKEN DYNO
 unset CYTOKINE_LOG_FILE GEM_PATH
 
-# Setup buildpack instrumentation.
-bpwatch init $LOGPLEX_KEY
-bpwatch build python $BUILDPACK_VERSION $REQUEST_ID
-TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
 
-bpwatch start compile
 
 # Syntax sugar.
 source $BIN_DIR/utils
@@ -86,22 +68,6 @@ source $BIN_DIR/warnings
 # Directory Hacks for path consistency.
 APP_DIR='/app'
 TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
-
-
-
-# Set new context.
-ORIG_BUILD_DIR=$BUILD_DIR
-BUILD_DIR=$APP_DIR
-
-# Switch to the repo's context.
-cd $BUILD_DIR
-
-# Warn for lack of Procfile.
-if [[ ! -f Procfile ]]; then
-  puts-warn 'Warning: Your application is missing a Procfile. This file tells Cloud Foundry how to run your application.'
-  puts-warn 'Learn more: https://docs.cloudfoundry.org/buildpacks/prod-server.html#procfile'
-fi
-
 
 
 
