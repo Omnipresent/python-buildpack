@@ -46,6 +46,7 @@ export BUILDPACK_PATH
 source $BUILDPACK_PATH/compile-extensions/lib/common
 # END CF Common
 
+echo $VENDOR_DIR
 mkdir -p $VENDOR_DIR
 
 # Static configurations for virtualenv caches.
