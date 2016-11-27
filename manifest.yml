@@ -1,12 +1,12 @@
 ---
-language: siftlib
+language: python
 default_versions:
-  - name: siftlib
-    version: 0.0.1
+  - name: python
+    version: 1.5.12
 url_to_dependency_map:
   - match: siftlib
     name: siftlib
-    version: 0.0.1
+    version: 1.5.12
   - match: leptonica
     name: leptonica
     version: 1.71
@@ -28,7 +28,7 @@ url_to_dependency_map:
 
 dependencies:
   - name: siftlib
-    version: 0.0.1
+    version: 1.5.12
     cf_stacks:
       - cflinuxfs2
   - name: leptonica
