@@ -16,6 +16,9 @@ url_to_dependency_map:
   - match: leptonica
     name: leptonica
     version: 1.71    
+  - match: opencv
+    name: opencv
+    version: 3.0    
 
 dependencies:
   - name: libmemcache
@@ -83,7 +86,13 @@ dependencies:
     cf_stacks:
       - cflinuxfs2
     uri: https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz
-    md5: cd67505a49adf506cbf130f340338ff6    
+    md5: cd67505a49adf506cbf130f340338ff6  
+  - name: opencv
+    version: 3.0
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://s3.amazonaws.com/labsdeps/opencv3.0_with_contrib_2.tar.gz
+    md5: a598635d47c2554290724d4099cacfbc      
 exclude_files:
   - .git/
   - .gitignore

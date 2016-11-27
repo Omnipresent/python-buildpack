@@ -10,7 +10,7 @@
 
 #I don't know what the purpose of this vendored link is. Not sure if I need it for what I'm doing. 
 #so I'm putting the same link from manifest.yml here. 
-VENDORED_OPENCV="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
+VENDORED_OPENCV="https://s3.amazonaws.com/labsdeps/opencv3.0_with_contrib_2.tar.gz"
 
 # Syntax sugar.
 source $BIN_DIR/utils
