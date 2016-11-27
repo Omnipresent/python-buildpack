@@ -7,6 +7,9 @@ url_to_dependency_map:
   - match: python-(\d+\.\d+\.\d+)
     name: python
     version: $1
+  - match: siftlib
+    name: siftlib
+    version: $1
 
 dependencies:
   - name: siftlib
