@@ -2,71 +2,79 @@
 language: python
 default_versions:
   - name: python
-    version: 1.5.12
+    version: 2.7.12
 url_to_dependency_map:
-  - match: siftlib
-    name: siftlib
-    version: 1.5.12
-  - match: leptonica
-    name: leptonica
-    version: 1.71
-  - match: opencv
-    name: opencv
-    version: 3.0
-  - match: tesseract
-    name: tesseract
-    version: 3.0
-  - match: tessdata
-    name: tessdata
-    version: 3.0
-  - match: gs9
-    name: gs9
-    version: 9.0
-  - match: python-gs
-    name: python-gs
-    version: 9.1
+  - match: python-(\d+\.\d+\.\d+)
+    name: python
+    version: $1
+  - match: libmemcache
+    name: libmemcache
+    version: 1.0.18
+  - match: libffi
+    name: libffi
+    version: "3.1"
 
 dependencies:
-  - name: siftlib
-    version: 1.5.12
+  - name: libmemcache
+    version: 1.0.18
     cf_stacks:
       - cflinuxfs2
-  - name: leptonica
-    version: 1.71
+    uri: https://buildpacks.cloudfoundry.org/python/binaries/cflinuxfs2/libmemcache.tar.gz
+    md5: 6b40600ab7c5bd52b5c6eedd18efb651
+  - name: libffi
+    version: "3.1"
     cf_stacks:
       - cflinuxfs2
-    uri: https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz
-    md5: cd67505a49adf506cbf130f340338ff6
-  - name: opencv
-    version: 3.0
+    uri: https://buildpacks.cloudfoundry.org/python/binaries/cflinuxfs2/libffi.tar.gz
+    md5: 83028a299b8ac323bda8a56c5c70d4cd
+  - name: python
+    version: 2.7.11
     cf_stacks:
       - cflinuxfs2
-    uri: https://s3.amazonaws.com/labsdeps/opencv3.0_with_contrib_2.tar.gz
-    md5: a598635d47c2554290724d4099cacfbc
-  - name: tesseract
-    version: 3.0
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-2.7.11-linux-x64.tgz
+    md5: 6a93c298ce97d4eb6b3ec7039f9ae439
+  - name: python
+    version: 2.7.12
     cf_stacks:
       - cflinuxfs2
-    uri: https://s3.amazonaws.com/labsdeps/tesseract_2.tar.gz
-    md5: 0f75238d260c11cff0b27e96ecd9f1c3
-  - name: tessdata
-    version: 3.0
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-2.7.12-linux-x64.tgz
+    md5: 5b49c4c1ba9ceae55f5d4bd0b95863f4
+  - name: python
+    version: 3.3.5
     cf_stacks:
       - cflinuxfs2
-    uri: https://s3.amazonaws.com/labsdeps/tessdata-slim_2.tar.gz
-    md5: b7be0e1dba494d71b3cd49580206058f
-  - name: gs9
-    version: 9.0
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.3.5-linux-x64.tgz
+    md5: f32e11f2d039dae0d6574403a80b485d
+  - name: python
+    version: 3.3.6
     cf_stacks:
       - cflinuxfs2
-    uri: https://s3.amazonaws.com/labsdeps/gs9_2.tar.gz
-    md5: 0ba34dd142b8ae616d08caa963ccd3d2
-  - name: python-gs
-    version: 9.1
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.3.6-linux-x64.tgz
+    md5: 08dee09d32477c7f0497e736c0c7967b
+  - name: python
+    version: 3.4.4
     cf_stacks:
       - cflinuxfs2
-    uri: https://s3.amazonaws.com/labsdeps/python-gs_2.tar.gz
-    md5: a83b5f7fb5480d985916973f5f38e614
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.4.4-linux-x64.tgz
+    md5: eeeaf592c843fbc05528d782f20486fc
+  - name: python
+    version: 3.4.5
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.4.5-linux-x64.tgz
+    md5: 119671dbbb94170e69da5f3247f6ee6e
+  - name: python
+    version: 3.5.1
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.5.1-linux-x64.tgz
+    md5: a292283d7eec49d7ea5c60036f633740
+  - name: python
+    version: 3.5.2
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://buildpacks.cloudfoundry.org/concourse-binaries/python/python-3.5.2-linux-x64.tgz
+    md5: 701a135b3228075c2ce59c527bc92e1e
 exclude_files:
   - .git/
   - .gitignore
@@ -76,4 +84,4 @@ exclude_files:
   - test/
   - bin/package
   - buildpack-packager/
-  - siftlib_buildpack-*v*.zip
+  - python_buildpack-*v*.zip
