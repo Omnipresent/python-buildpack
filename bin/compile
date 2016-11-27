@@ -51,7 +51,7 @@ export BUILDPACK_PATH
 source $BUILDPACK_PATH/compile-extensions/lib/common
 # END CF Common
 
-mkdir -p $vendor_dir
+# mkdir -p $vendor_dir
 
 # Static configurations for virtualenv caches.
 VIRTUALENV_LOC=".heroku/venv"
