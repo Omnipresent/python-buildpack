@@ -17,8 +17,6 @@ VENDORED_OPENCV="https://s3.amazonaws.com/labsdeps/$FILENAME"
 source $BIN_DIR/utils
 
 
-# bpwatch start opencv_install
-
 if [ ! -e ".heroku/python/lib/python2.7/site-packages/cv2.so" ]; then
   echo "-----> Bootstrapping OpenCV (with contrib)."
   filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_OPENCV $vendor_dir)
@@ -30,5 +28,3 @@ if [ ! -e ".heroku/python/lib/python2.7/site-packages/cv2.so" ]; then
 fi
 
 export OPENCV=/app/.heroku/python/lib/python2.7/site-packages
-
-# bpwatch stop opencv_install
