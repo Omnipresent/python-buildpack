@@ -19,14 +19,20 @@ source $bp_dir/bin/common.sh
 
 mkdir -p $vendor_dir
 
-# The location of the pre-compiled cryptography binary.
-# VENDORED_OSGEO="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
+The location of the pre-compiled cryptography binary.
+VENDORED_OSGEO="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
 
-# if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
-#   status "Bootstrapping osgeolib."
-#   # Download and extract into target vendor directory.
-#   curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
-# fi
+if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
+  status "Bootstrapping osgeolib."
+  # Download and extract into target vendor directory.
+  curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
+fi
+
+function bpwatch() {
+  :
+}
+
+
 
 source $BIN_DIR/steps/leptonica
 
