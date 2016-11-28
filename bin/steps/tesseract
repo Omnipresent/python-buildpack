@@ -17,6 +17,7 @@ source $BIN_DIR/utils
 
 if [ ! -e ".heroku/vendor/lib/libtesseract.so" ]; then
   echo "-----> Bootstrapping Tessseract."
+  echo $VENDORED_TESS
   filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_TESS $vendor_dir)
   echo "Downloaded [$filtered_url]"
   downloaded_file=$vendor_dir/$FILENAME
