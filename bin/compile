@@ -21,7 +21,7 @@ ROOT_DIR=$(dirname $BIN_DIR)
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-VENDOR_DIR=$BUILD_DIR/.heroku/vendor
+VENDOR_DIR=/app/.heroku/vendor
 
 $ROOT_DIR/compile-extensions/bin/check_stack_support
 
