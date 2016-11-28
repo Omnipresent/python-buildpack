@@ -27,7 +27,7 @@ if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
   curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
 fi
 
-# # Update env variables
+# Update env variables
 # status "Building runtime environment."
 # mkdir -p $build_dir/.profile.d
 # echo 'export LIBKML_LIBS="${LIBRARY_PATH}"' > $build_dir/.profile.d/osgeo.sh
