@@ -32,7 +32,7 @@ mkdir -p $sitepackages_dir
 
 source $BIN_DIR/steps/leptonica
 source $BIN_DIR/steps/opencv
-# source $BIN_DIR/steps/tesseract
+source $BIN_DIR/steps/tesseract
 # source $BIN_DIR/steps/tessdata
 # source $BIN_DIR/steps/ghostscript
 # source $BIN_DIR/steps/gs
