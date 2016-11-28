@@ -16,7 +16,7 @@ VENDORED_OPENCV="https://s3.amazonaws.com/labsdeps/opencv3.0_with_contrib_2.tar.
 source $BIN_DIR/utils
 
 
-bpwatch start opencv_install
+# bpwatch start opencv_install
 
 if [ ! -e ".heroku/python/lib/python2.7/site-packages/cv2.so" ]; then
   echo "-----> Bootstrapping OpenCV (with contrib)."
@@ -38,4 +38,4 @@ fi
 
 export OPENCV=/app/.heroku/python/lib/python2.7/site-packages
 
-bpwatch stop opencv_install
+# bpwatch stop opencv_install

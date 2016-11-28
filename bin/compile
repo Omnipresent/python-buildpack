@@ -30,6 +30,8 @@ fi
 
 source $BIN_DIR/steps/leptonica
 
+source $BIN_DIR/steps/opencv
+
 # # Update env variables
 # status "Building runtime environment."
 # mkdir -p $build_dir/.profile.d
