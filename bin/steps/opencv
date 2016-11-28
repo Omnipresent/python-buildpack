@@ -20,13 +20,22 @@ source $BIN_DIR/utils
 
 if [ ! -e ".heroku/python/lib/python2.7/site-packages/cv2.so" ]; then
   echo "-----> Bootstrapping OpenCV (with contrib)."
-  mkdir -p .heroku/python/lib/python2.7/site-packages
-  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_OPENCV /tmp)
-  echo "Downloaded [$filtered_url] th"
-  downloaded_file=/tmp/opencv3.0_with_contrib_2.tar.gz
-  tar zxvf $downloaded_file -C .heroku/vendor &> /dev/null
-  mv .heroku/vendor/cv2.so .heroku/python/lib/python2.7/site-packages/cv2.so
+  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_OPENCV $vendor_dir)
+  # echo "Downloaded [$filtered_url]"
+  echo $opencv_dir
+  downloaded_file=$vendor_dir/opencv3.0_with_contrib_2.tar.gz
+  echo $downloaded_file
+  tar zxvf $downloaded_file -C $vendor_dir &> /dev/null
   rm $downloaded_file
+  mv $vendor_dir/.heroku/vendor/cv2.so $opencv_dir/cv2.so
+
+  # mkdir -p .heroku/python/lib/python2.7/site-packages
+  # filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_OPENCV /tmp)
+  # echo "Downloaded [$filtered_url] th"
+  # downloaded_file=/tmp/opencv3.0_with_contrib_2.tar.gz
+  # tar zxvf $downloaded_file -C .heroku/vendor &> /dev/null
+  # mv .heroku/vendor/cv2.so .heroku/python/lib/python2.7/site-packages/cv2.so
+  # rm $downloaded_file
 
   # translated_url=`translate_dependency_url $VENDORED_OPENCV`
   # filtered_url=`filter_dependency_url $translated_url`

@@ -10,7 +10,7 @@ build_dir=$1
 cache_dir=$2
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 vendor_dir=$build_dir/.heroku/vendor
-
+opencv_dir=$build_dir/.heroku/python/lib/python2.7/site-packages
 # CF Common
 BUILDPACK_PATH=$bp_dir
 export BUILDPACK_PATH
@@ -19,6 +19,7 @@ source $bp_dir/compile-extensions/lib/common
 source $bp_dir/bin/common.sh
 
 mkdir -p $vendor_dir
+mkdir -p $opencv_dir
 
 # The lotestcation of the pre-compiled cryptography binary.
 # VENDORED_OSGEO="https://s3.amazonaws.com/boundless-cloudfoundry/cflinuxfs2/osgeolib-0.0.1-linux-x64.tar.gz"
