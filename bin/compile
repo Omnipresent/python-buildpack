@@ -10,7 +10,7 @@ build_dir=$1
 cache_dir=$2
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 vendor_dir=$build_dir/.heroku/vendor
-opencv_dir=$build_dir/.heroku/python/lib/python2.7/site-packages
+sitepackages_dir=$build_dir/.heroku/python/lib/python2.7/site-packages
 # CF Common
 BUILDPACK_PATH=$bp_dir
 export BUILDPACK_PATH
@@ -31,8 +31,11 @@ mkdir -p $opencv_dir
 # fi
 
 source $BIN_DIR/steps/leptonica
-
 source $BIN_DIR/steps/opencv
+source $BIN_DIR/steps/tesseract
+source $BIN_DIR/steps/tessdata
+source $BIN_DIR/steps/ghostscript
+source $BIN_DIR/steps/gs
 
 # # Update env variables
 # status "Building runtime environment."

@@ -10,24 +10,19 @@
 
 #I don't know what the purpose of this vendored link is. Not sure if I need it for what I'm doing. 
 #so I'm putting the same link from manifest.yml here. 
+FILENAME="gs9_2.tar.gz"
 VENDORED_GHOSTSCRIPT="https://s3.amazonaws.com/labsdeps/gs9_2.tar.gz"
 
 # Syntax sugar.
 source $BIN_DIR/utils
 
-
-bpwatch start ghostscript_install
-
 if [ ! -e ".heroku/vendor/lib/libgs.so" ]; then
   echo "-----> Bootstrapping Ghostscript."
-
-  translated_url=`translate_dependency_url $VENDORED_GHOSTSCRIPT`
-  filtered_url=`filter_dependency_url $translated_url`
+  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_GHOSTSCRIPT $vendor_dir)
   echo "Downloaded [$filtered_url]"
-  curl $translated_url -s | tar zxv -C .heroku/vendor &> /dev/null
-  # curl https://s3.amazonaws.com/labsdeps/gs9.tar.gz -s | tar zxv -C .heroku/vendor &> /dev/null
+  downloaded_file=$vendor_dir/$FILENAME
+  tar zxvf $downloaded_file -C $vendor_dir &> /dev/null
+  rm $downloaded_file
 fi
 
 export GS=/app/.heroku/vendor/lib/
-
-bpwatch stop ghostscript_install

@@ -8,24 +8,20 @@
 
 # The location of the pre-compiled libmemcached binary.
 
-
-VENDORED_TESS="https://s3.amazonaws.com/labsdeps/tesseract_2.tar.gz"
+FILENAME="tesseract_2.tar.gz"
+VENDORED_TESS="https://s3.amazonaws.com/labsdeps/$FILENAME"
 
 # Syntax sugar.
 source $BIN_DIR/utils
 
 
-bpwatch start tess_install
-
 if [ ! -e ".heroku/vendor/lib/libtesseract.so" ]; then
-  echo "-----> Bootstrapping Tesseract."
-
-  translated_url=`translate_dependency_url $VENDORED_TESS`
-  filtered_url=`filter_dependency_url $translated_url`
+  echo "-----> Bootstrapping Tessseract."
+  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_TESS $vendor_dir)
   echo "Downloaded [$filtered_url]"
-  curl $translated_url -s | tar zxv -C .heroku/vendor &> /dev/null
+  downloaded_file=$vendor_dir/$FILENAME
+  tar zxvf $downloaded_file -C $vendor_dir &> /dev/null
+  rm $downloaded_file
 fi
 
 export TESSERACT=/app/.heroku/vendor/lib/
-
-bpwatch stop tess_install
