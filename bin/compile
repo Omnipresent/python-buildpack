@@ -19,7 +19,7 @@ source $bp_dir/bin/common.sh
 
 mkdir -p $vendor_dir
 
-# The location of the pre-compiled cryptography binary.
+# The lotestcation of the pre-compiled cryptography binary.
 VENDORED_OSGEO="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
 
 if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
