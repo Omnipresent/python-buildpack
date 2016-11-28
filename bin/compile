@@ -28,7 +28,7 @@ if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
   curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
 fi
 
-# source $BIN_DIR/steps/leptonica
+source $BIN_DIR/steps/leptonica
 
 # source $BIN_DIR/steps/opencv
 
