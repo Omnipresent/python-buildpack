@@ -16,7 +16,7 @@ VENDORED_LEPTONICA="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
 source $BIN_DIR/utils
 
 
-bpwatch start leptonica_install
+# bpwatch start leptonica_install
 
 if [ ! -e ".heroku/vendor/lib/labs-leptonica-1.71/lib/lept.so.4.0.2" ]; then
   echo "-----> Bootstrapping leptonica."
@@ -31,4 +31,4 @@ fi
 
 export LEPTONICA=$(pwd)/vendor
 
-bpwatch stop leptonica_install
+# bpwatch stop leptonica_install
