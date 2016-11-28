@@ -32,7 +32,7 @@ mkdir -p $opencv_dir
 
 source $BIN_DIR/steps/leptonica
 
-# source $BIN_DIR/steps/opencv
+source $BIN_DIR/steps/opencv
 
 # # Update env variables
 # status "Building runtime environment."
