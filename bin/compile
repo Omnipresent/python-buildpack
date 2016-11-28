@@ -34,7 +34,7 @@ fi
 
 
 
-source $BIN_DIR/steps/leptonica
+# source $BIN_DIR/steps/leptonica
 
 # # Update env variables
 # status "Building runtime environment."
