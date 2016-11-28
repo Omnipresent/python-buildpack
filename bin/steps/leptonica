@@ -21,7 +21,7 @@ bpwatch start leptonica_install
 if [ ! -e ".heroku/vendor/lib/labs-leptonica-1.71/lib/lept.so.4.0.2" ]; then
   echo "-----> Bootstrapping leptonica."
   mkdir -p .heroku/vendor
-
+  echo $vendor_dir
   filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_LEPTONICA /tmp)
   echo "Downloaded [$filtered_url]"
   downloaded_file=/tmp/leptonica-1.71.tgz

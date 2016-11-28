@@ -4,6 +4,7 @@ set -eo pipefail
 # set -x          # enable debugging
 
 # Paths.
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 build_dir=$1
 cache_dir=$2
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
@@ -19,13 +20,15 @@ source $bp_dir/bin/common.sh
 mkdir -p $vendor_dir
 
 # The location of the pre-compiled cryptography binary.
-VENDORED_OSGEO="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
+# VENDORED_OSGEO="https://s3.amazonaws.com/labsdeps/leptonica-1.71.tgz"
 
-if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
-  status "Bootstrapping osgeolib."
-  # Download and extract into target vendor directory.
-  curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
-fi
+# if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
+#   status "Bootstrapping osgeolib."
+#   # Download and extract into target vendor directory.
+#   curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
+# fi
+
+source $BIN_DIR/steps/leptonica
 
 # # Update env variables
 # status "Building runtime environment."
