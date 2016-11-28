@@ -21,13 +21,13 @@ source $bp_dir/bin/common.sh
 mkdir -p $vendor_dir
 
 # The lotestcation of the pre-compiled cryptography binary.
-VENDORED_OSGEO="https://s3.amazonaws.com/boundless-cloudfoundry/cflinuxfs2/osgeolib-0.0.1-linux-x64.tar.gz"
+# VENDORED_OSGEO="https://s3.amazonaws.com/boundless-cloudfoundry/cflinuxfs2/osgeolib-0.0.1-linux-x64.tar.gz"
 
-if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
-  status "Bootstrapping osgeolib."
-  # Download and extract into target vendor directory.
-  curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
-fi
+# if [ ! -f "$vendor_dir/bin/gdalserver" ]; then
+#   status "Bootstrapping osgeolib."
+#   # Download and extract into target vendor directory.
+#   curl $VENDORED_OSGEO -s | tar zxv -C $vendor_dir &> /dev/null
+# fi
 
 source $BIN_DIR/steps/leptonica
 
