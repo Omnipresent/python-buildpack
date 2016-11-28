@@ -22,7 +22,7 @@ if [ ! -e ".heroku/vendor/lib/labs-leptonica-1.71/lib/lept.so.4.0.2" ]; then
   echo "----->   came in here came in leptonica Bootstrapping leptonica."
   mkdir -p .heroku/vendor
   echo $vendor_dir
-  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_LEPTONICA /tmp)
+  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_LEPTONICA $vendor_dir)
   # echo "Downloaded [$filtered_url]"
   # downloaded_file=/tmp/leptonica-1.71.tgz
   # tar zxvf $downloaded_file -C .heroku/vendor &> /dev/null
