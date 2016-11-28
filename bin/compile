@@ -14,7 +14,7 @@ BUILDPACK_PATH=$bp_dir
 export BUILDPACK_PATH
 source $bp_dir/compile-extensions/lib/common
 # END CF Common
-source $bp_dir/bin/common.sh
+# source $bp_dir/bin/common.sh
 
 mkdir -p $vendor_dir
 
