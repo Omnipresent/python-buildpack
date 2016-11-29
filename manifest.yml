@@ -28,7 +28,10 @@ url_to_dependency_map:
   - match: gs9
     name: gs9
     version: 9.0          
-
+  - match: python-gs
+    name: python-gs
+    version: 9.1
+    
 dependencies:
   - name: libmemcache
     version: 1.0.18
@@ -119,7 +122,13 @@ dependencies:
     cf_stacks:
       - cflinuxfs2
     uri: https://s3.amazonaws.com/labsdeps/gs9_2.tar.gz
-    md5: 0ba34dd142b8ae616d08caa963ccd3d2             
+    md5: 0ba34dd142b8ae616d08caa963ccd3d2  
+  - name: python-gs
+    version: 9.1
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://s3.amazonaws.com/labsdeps/python-gs_2.tar.gz
+    md5: a83b5f7fb5480d985916973f5f38e614               
 exclude_files:
   - .git/
   - .gitignore
