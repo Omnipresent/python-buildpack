@@ -18,7 +18,10 @@ url_to_dependency_map:
     version: 1.71    
   - match: opencv
     name: opencv
-    version: 3.0    
+    version: 3.0   
+  - match: tesseract
+    name: tesseract
+    version: 3.0     
 
 dependencies:
   - name: libmemcache
@@ -92,7 +95,13 @@ dependencies:
     cf_stacks:
       - cflinuxfs2
     uri: https://s3.amazonaws.com/labsdeps/opencv3.0_with_contrib_2.tar.gz
-    md5: a598635d47c2554290724d4099cacfbc      
+    md5: a598635d47c2554290724d4099cacfbc   
+  - name: tesseract
+    version: 3.0
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://s3.amazonaws.com/labsdeps/tesseract_2.tar.gz
+    md5: 0f75238d260c11cff0b27e96ecd9f1c3           
 exclude_files:
   - .git/
   - .gitignore
