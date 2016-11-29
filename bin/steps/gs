@@ -18,7 +18,7 @@ source $BIN_DIR/utils
 
 if [ ! -d ".heroku/python/lib/python2.7/site-packages/ghostscript" ]; then
   echo "-----> Bootstrapping python gs."
-  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_GHOSTSCRIPT $vendor_dir)
+  filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_PYTHON_GS $vendor_dir)
   echo "Downloaded [$filtered_url]"
   downloaded_file=$vendor_dir/$FILENAME
   tar zxvf $downloaded_file -C $sitepackages_dir &> /dev/null

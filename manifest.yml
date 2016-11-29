@@ -31,7 +31,6 @@ url_to_dependency_map:
   - match: python-gs
     name: python-gs
     version: 9.1
-    
 dependencies:
   - name: libmemcache
     version: 1.0.18
