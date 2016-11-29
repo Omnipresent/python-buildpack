@@ -19,6 +19,7 @@ source $BIN_DIR/utils
 
 if [ ! -e ".heroku/python/lib/python2.7/site-packages/cv2.so" ]; then
   echo "-----> Bootstrapping OpenCV (with contrib)."
+  echo $ROOT_DIR
   filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency $VENDORED_OPENCV $vendor_dir)
   echo "Downloaded [$filtered_url]"
   downloaded_file=$vendor_dir/$FILENAME
