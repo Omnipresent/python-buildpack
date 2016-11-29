@@ -19,6 +19,7 @@ if [ ! -e ".heroku/vendor/lib/libtesseract.so" ]; then
   echo "-----> Bootstrapping Tessseract."
   echo "VENDORED_TESS is $VENDORED_TESS"
   echo "vendor_dir is $vendor_dir"
+  echo $ROOT_DIR
   filtered_url=$($ROOT_DIR/compile-extensions/bin/download_dependency https://s3.amazonaws.com/labsdeps/tesseract_2.tar.gz $vendor_dir)
   echo "here2"
   echo "Downloaded [$filtered_url]"
