@@ -21,7 +21,10 @@ url_to_dependency_map:
     version: 3.0   
   - match: tesseract
     name: tesseract
-    version: 3.0     
+    version: 3.0   
+  - match: tessdata
+    name: tessdata
+    version: 3.0      
 
 dependencies:
   - name: libmemcache
@@ -101,7 +104,13 @@ dependencies:
     cf_stacks:
       - cflinuxfs2
     uri: https://s3.amazonaws.com/labsdeps/tesseract_2.tar.gz
-    md5: 0f75238d260c11cff0b27e96ecd9f1c3           
+    md5: 0f75238d260c11cff0b27e96ecd9f1c3   
+  - name: tessdata
+    version: 3.0
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://s3.amazonaws.com/labsdeps/tessdata-slim_2.tar.gz
+    md5: b7be0e1dba494d71b3cd49580206058f            
 exclude_files:
   - .git/
   - .gitignore
