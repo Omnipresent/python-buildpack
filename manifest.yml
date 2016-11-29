@@ -24,7 +24,10 @@ url_to_dependency_map:
     version: 3.0   
   - match: tessdata
     name: tessdata
-    version: 3.0      
+    version: 3.0
+  - match: gs9
+    name: gs9
+    version: 9.0          
 
 dependencies:
   - name: libmemcache
@@ -110,7 +113,13 @@ dependencies:
     cf_stacks:
       - cflinuxfs2
     uri: https://s3.amazonaws.com/labsdeps/tessdata-slim_2.tar.gz
-    md5: b7be0e1dba494d71b3cd49580206058f            
+    md5: b7be0e1dba494d71b3cd49580206058f   
+  - name: gs9
+    version: 9.0
+    cf_stacks:
+      - cflinuxfs2
+    uri: https://s3.amazonaws.com/labsdeps/gs9_2.tar.gz
+    md5: 0ba34dd142b8ae616d08caa963ccd3d2             
 exclude_files:
   - .git/
   - .gitignore
